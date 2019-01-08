@@ -13,15 +13,7 @@
  *= require_tree .
  *= require_self
  */
-
-h1 {
-  font-family: 'Roboto', sans-serif;
-}
-p {
-  font-family: 'Roboto', sans-serif;
-}
 .form-control {
-  font-family: 'Roboto', sans-serif;
   display: inline !important;
   width: 10%;
 }
