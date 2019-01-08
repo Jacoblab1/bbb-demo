@@ -1,7 +1,8 @@
 require 'bigbluebutton_api'
 
 class ConnectController < ApplicationController
-  private def prepare
+
+  def prepare
     url = "http://10.253.174.144/bigbluebutton/api"
     secret = "5c0bac3a78aab43ef22dc75e89312a5a"
     version = 0.81
@@ -9,7 +10,7 @@ class ConnectController < ApplicationController
     @api = BigBlueButton::BigBlueButtonApi.new(url, secret, version.to_s, true)
   end
 
-  private def create_demo_meeting
+  def create_demo_meeting
     @name = "Demo Meeting"
     @id = "demomeeting2"
     @options = {
@@ -32,4 +33,5 @@ class ConnectController < ApplicationController
     redirect_to "#{url}"
   end
 
+  private :prepare, :create_demo_meeting
 end
