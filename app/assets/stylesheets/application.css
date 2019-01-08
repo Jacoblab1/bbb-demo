@@ -15,7 +15,7 @@
  */
 .form-control {
   display: inline !important;
-  width: 10%;
+  width: 100%;
 }
 body {
   margin-top: 20px;
@@ -24,4 +24,8 @@ body {
 }
 .logo {
   max-width: 35px;
+}
+
+.row {
+  padding-top: 5px;
 }

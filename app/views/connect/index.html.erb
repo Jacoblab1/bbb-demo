@@ -1,8 +1,27 @@
 <h1> Welcome to BigBlueButton <%= image_tag 'bbb-logo.jpeg', class:"logo" %></h1>
 <p> Enter your name below to join the demo server </p>
-
-<%= form_tag do %>
-  <label for="name">Name: </label>
-  <%= text_field_tag :name, "",  class:"form-control"%>
- <%= submit_tag "Join server", class:"btn btn-success" %>
-<% end %>
+<div class="container">
+  <%= form_tag do %>
+  <div class="row justify-content-md-center">
+    <div class="col-md-1">
+      <label for="name">Name: </label>
+    </div>
+    <div class="col-md-3">
+      <%= text_field_tag :name, "",  class:"form-control"%>
+    </div>
+  </div>
+  <div class="row justify-content-md-center">
+    <div class="col-md-1">
+      <label for="name">Password: </label>
+    </div>
+    <div class="col-md-3">
+      <%= text_field_tag :password, "",  class:"form-control"%>
+    </div>
+  </div>
+  <div class="row justify-content-md-center">
+    <div class="col-md-1">
+      <%= submit_tag "Join server", class:"btn btn-success" %>
+    </div>
+  </div>
+  <% end %>
+</div>

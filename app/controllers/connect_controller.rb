@@ -13,8 +13,8 @@ class ConnectController < ApplicationController
     @name = "Demo Meeting"
     @id = "demomeeting2"
     @options = {
-      :attendeePW=> "mp",
-      :moderatorPW => "ap",
+      :attendeePW=> "ap",
+      :moderatorPW => "mp",
       :welcome => "Welcome to the demo meeting!"
     }
     if @api.is_meeting_running?(@id)
@@ -28,7 +28,7 @@ class ConnectController < ApplicationController
   def join
     prepare()
     create_demo_meeting()
-    url = @api.join_meeting_url(@id, params[:name], @options[:attendeePW])
+    url = @api.join_meeting_url(@id, params[:name], params[:password])
     redirect_to "#{url}"
   end
 
