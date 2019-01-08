@@ -1,27 +1,36 @@
 <h1> Welcome to BigBlueButton <%= image_tag 'bbb-logo.jpeg', class:"logo" %></h1>
-<p> Enter your name below to join the demo server </p>
+<p> Join a meeting on the demo server </p>
 <div class="container">
   <%= form_tag do %>
-  <div class="row justify-content-md-center">
-    <div class="col-md-1">
-      <label for="name">Name: </label>
+    <div class="row justify-content-md-center">
+      <div class="col-md-1">
+        <label for="name">ID: </label>
+      </div>
+      <div class="col-md-3">
+        <%= text_field_tag :id, "",  class:"form-control"%>
+      </div>
     </div>
-    <div class="col-md-3">
-      <%= text_field_tag :name, "",  class:"form-control"%>
+    <div class="row justify-content-md-center">
+      <div class="col-md-1">
+        <label for="name">Username: </label>
+      </div>
+      <div class="col-md-3">
+        <%= text_field_tag :username, "",  class:"form-control"%>
+      </div>
     </div>
-  </div>
-  <div class="row justify-content-md-center">
-    <div class="col-md-1">
-      <label for="name">Password: </label>
+    <div class="row justify-content-md-center">
+      <div class="col-md-1">
+        <label for="name">Password: </label>
+      </div>
+      <div class="col-md-3">
+        <%= text_field_tag :password, "",  class:"form-control"%>
+      </div>
     </div>
-    <div class="col-md-3">
-      <%= text_field_tag :password, "",  class:"form-control"%>
+    <div class="row justify-content-md-center">
+      <div class="col-md-4">
+        <%= submit_tag "Join Server", class:"btn btn-warning" %>
+        <%= link_to 'View Meetings', meetings_path, class:"btn btn-warning" %>
+      </div>
     </div>
-  </div>
-  <div class="row justify-content-md-center">
-    <div class="col-md-1">
-      <%= submit_tag "Join server", class:"btn btn-success" %>
-    </div>
-  </div>
   <% end %>
 </div>

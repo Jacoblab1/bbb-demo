@@ -1,0 +1,22 @@
+
+<p>
+  <strong>Name:</strong>
+  <%= @meeting.name %>
+</p>
+
+<p>
+  <strong>ID:</strong>
+  <%= @meeting.id %>
+</p>
+
+<p>
+  <strong>Moderator PW:</strong>
+  <%= @meeting.modPW %>
+</p>
+
+<p>
+  <strong>Attende PW:</strong>
+  <%= @meeting.attPW %>
+</p>
+
+<%= link_to 'Back to meetings', meetings_path, class:"btn btn-warning" %>
