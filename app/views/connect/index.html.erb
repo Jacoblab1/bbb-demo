@@ -1,8 +1,8 @@
-<h1> Welcome to BigBlueButton </h1>
+<h1> Welcome to BigBlueButton <%= image_tag 'bbb-logo.jpeg', class:"logo" %></h1>
 <p> Enter your name below to join the demo server </p>
 
 <%= form_tag do %>
-  <label for="name">Name</label>
+  <label for="name">Name: </label>
   <%= text_field_tag :name, "",  class:"form-control"%>
  <%= submit_tag "Join server", class:"btn btn-success" %>
 <% end %>
