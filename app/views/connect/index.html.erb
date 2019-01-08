@@ -3,6 +3,6 @@
 
 <%= form_tag do %>
   <label for="name">Name</label>
-  <%= text_field_tag :name %>
- <%= submit_tag "Join server" %>
+  <%= text_field_tag :name, "",  class:"form-control"%>
+ <%= submit_tag "Join server", class:"btn btn-success" %>
 <% end %>
