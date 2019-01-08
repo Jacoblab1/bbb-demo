@@ -13,14 +13,9 @@
  *= require_tree .
  *= require_self
  */
-.form-control {
-  display: inline !important;
-  width: 100%;
-}
 body {
   margin-top: 20px;
   text-align: center;
-  background-color: #FFF;
 }
 .logo {
   max-width: 35px;
