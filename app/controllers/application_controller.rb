@@ -1,6 +1,7 @@
 require 'bigbluebutton_api'
 
 class ApplicationController < ActionController::Base
+  # setup api connection with BBB server
   def prepare
     url = "http://10.253.174.144/bigbluebutton/api"
     secret = "5c0bac3a78aab43ef22dc75e89312a5a"

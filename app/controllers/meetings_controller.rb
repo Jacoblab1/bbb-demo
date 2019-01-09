@@ -13,14 +13,17 @@ class MeetingsController < ApplicationController
   end
 
   def show
+    # get meeting with specified id
     @meeting = Meeting.find(params[:id])
   end
 
   def index
+    # get all meetings
     @meetings = Meeting.all
   end
 
   def edit
+    # end a meeting on server, and then delete it from database
     @meeting = Meeting.find(params[:id])
     @id = params[:id].to_s
     @pass = @meeting.modPW.to_s
@@ -31,6 +34,7 @@ class MeetingsController < ApplicationController
   end
 
   private def create_meeting(name, id, modPW, attPW)
+    # create a meeting on the BBB server
     prepare()
     @id = id
     @name = name
