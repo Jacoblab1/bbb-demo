@@ -30,7 +30,7 @@ class MeetingsController < ApplicationController
     @meeting.destroy
   end
 
-  private def create_meeting(name, id, attPW, modPW)
+  private def create_meeting(name, id, modPW, attPW)
     prepare()
     @id = id
     @name = name
@@ -46,13 +46,4 @@ class MeetingsController < ApplicationController
       puts "The meeting has been created"
     end
   end
-
-  private def prepare
-    url = "http://10.253.174.144/bigbluebutton/api"
-    secret = "5c0bac3a78aab43ef22dc75e89312a5a"
-    version = 0.81
-
-    @api = BigBlueButton::BigBlueButtonApi.new(url, secret, version.to_s, true)
-  end
-
 end
