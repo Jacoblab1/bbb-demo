@@ -30,6 +30,9 @@
       <div class="col-md-4">
         <%= submit_tag "Join Server", class:"btn btn-warning" %>
         <%= link_to 'View Meetings', meetings_path, class:"btn btn-warning" %>
+        <% if @error == true %>
+          <p class="error">Error: Incorrect ID or password</p>
+        <% end %>
       </div>
     </div>
   <% end %>

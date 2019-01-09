@@ -24,3 +24,10 @@ body {
 .row {
   padding-top: 5px;
 }
+
+.error {
+  color: #ce2d2d;
+  background-color: #ffb7b7;
+  border-radius: 5px;
+  margin-top: 10px;
+}

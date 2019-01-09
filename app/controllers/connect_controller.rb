@@ -1,27 +1,35 @@
 require 'bigbluebutton_api'
 
 class ConnectController < ApplicationController
+
+  def index
+    @error = flash[:error]
+  end
+
   def join
     prepare()
     if check_valid()
+      session[:error] = false
       url = @api.join_meeting_url(params[:id], params[:username], params[:password])
       redirect_to "#{url}"
     else
-      puts "Error joining meeting"
+      flash[:error] = true
+      redirect_to "/"
+      puts "DEBUG: Problem joining meeting"
     end
   end
 
   # this function is not complete
   private def check_valid
-    @meeting = Meeting.find(params[:id])
-    if @meeting == nil
-      # meeting doesn't exist in local db (may still exist on server, but this app doesn't check that)
-      return false
-    elsif @meeting.modPW == params[:password] || @meeting.attPW == params[:password]
-      # password is good
-      return true
+
+    if Meeting.exists?(params[:id])
+      @meeting = Meeting.find(params[:id])
+      if @meeting.modPW == params[:password] || @meeting.attPW == params[:password]
+        return true
+      else
+        return false
+      end
     else
-      # password was bad
       return false
     end
   end
