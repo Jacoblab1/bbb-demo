@@ -32,4 +32,7 @@
     <%= form.submit class:'btn btn-warning' %>
   </p>
 <% end %>
+<% if flash[:missing] == true %>
+  <p class="error">Error: Please fill all fields</p>
+<% end %>
 </div>
