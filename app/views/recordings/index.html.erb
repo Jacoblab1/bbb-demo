@@ -1,1 +1,23 @@
-<h1> check console </h1>
+<h1>Avaliable Recordings</h1>
+<table class="table container col-md-4 table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Recording ID</th>
+      <th scope="col">Meeting Name</th>
+      <th scope="col">Meeting ID</th>
+      <th scope="col">Link</th>
+    </tr>
+  </thead>
+  <tbody class="table-striped">
+  <% @result[:recordings].each do |recording| %>
+    <tr>
+      <td><%= recording[:recordID] %></td>
+      <td><%= recording[:name] %></td>
+      <td><%= recording[:meetingID] %></td>
+      <td><%=
+      url = recording[:playback][:format][:url]
+      link_to 'View', "#{url}" %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

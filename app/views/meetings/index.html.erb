@@ -6,7 +6,7 @@
       <th scope="col">Name</th>
       <th scope="col">ID</th>
       <th scope="col">Login Info</th>
-      <th scope"col">End</th>
+      <th scope="col">Remove</th>
     </tr>
   </thead>
   <tbody class="table-striped">
@@ -15,7 +15,7 @@
       <td><%= meeting.name %></td>
       <td><%= meeting.id %></td>
       <td><%= link_to 'View', meeting_path(meeting) %></td>
-      <td><%= link_to 'End', edit_meeting_path(meeting) %></td>
+      <td><%= link_to 'Remove', edit_meeting_path(meeting) %></td>
     </tr>
   <% end %>
   </tbody>
