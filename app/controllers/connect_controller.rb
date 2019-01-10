@@ -10,7 +10,9 @@ class ConnectController < ApplicationController
     prepare()
     if check_valid()
       session[:error] = false
-      url = @api.join_meeting_url(params[:id], params[:username], params[:password])
+      meeting = Meeting.find(params[:id])
+      create_meeting(meeting[:name], meeting[:id], meeting[:modPW], meeting[:attPW]) # create on bbb server
+      url = @api.join_meeting_url(meeting[:id], params[:username], params[:password])
       redirect_to "#{url}"
     else
       flash[:error] = true
