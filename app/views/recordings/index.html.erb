@@ -1,18 +1,21 @@
-<h1>Avaliable Recordings</h1>
-<table class="table container col-md-4 table-bordered">
+<h1><%= link_to 'Back', root_path, class:"btn btn-dark" %> Avaliable Recordings</h1>
+<p></p>
+<input class="container col-md-4 form-control" type="text" id="search" onkeyup="search()" placeholder="Search for meeting names...">
+<p></p>
+<table id="searchTable" class="table container col-md-4 table-bordered table-striped">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">Recording ID</th>
       <th scope="col">Meeting Name</th>
+      <th scope="col">Recording ID</th>
       <th scope="col">Meeting ID</th>
       <th scope="col">Link</th>
     </tr>
   </thead>
-  <tbody class="table-striped">
+  <tbody>
   <% @result[:recordings].each do |recording| %>
     <tr>
-      <td><%= recording[:recordID] %></td>
       <td><%= recording[:name] %></td>
+      <td><%= recording[:recordID] %></td>
       <td><%= recording[:meetingID] %></td>
       <td><%=
       url = recording[:playback][:format][:url]

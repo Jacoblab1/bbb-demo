@@ -23,15 +23,14 @@ class ConnectController < ApplicationController
 
   # check if valid meeting ID/password
   private def check_valid
-    if Meeting.exists?(params[:id])
-      @meeting = Meeting.find(params[:id])
-      if @meeting.modPW == params[:password] || @meeting.attPW == params[:password]
-        return true
-      else
-        return false
-      end
-    else
-      return false
+    @meetings = @api.get_meetings()
+    @meetings[:meetings].each do |m|
+       if m[:meetingID] == params[:id]
+          if m[:moderatorPW] == params[:password] || m[:attendeePW] == params[:password]
+            return true
+          end
+       end
     end
+    return false
   end
 end
