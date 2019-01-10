@@ -3,4 +3,5 @@ class Meeting < ApplicationRecord
   @id
   @modPW
   @attPW
+  @recording
 end

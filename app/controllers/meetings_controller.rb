@@ -3,13 +3,13 @@ require 'bigbluebutton_api'
 class MeetingsController < ApplicationController
   def create
     @meeting = Meeting.create(meeting_params) # create in database
-    create_meeting(meeting_params[:name], meeting_params[:id], meeting_params[:modPW], meeting_params[:attPW]) # create on bbb server
+    create_meeting(meeting_params[:name], meeting_params[:id], meeting_params[:modPW], meeting_params[:attPW], meeting_params[:recording]) # create on bbb server
     @meeting.save
     redirect_to @meeting
   end
 
   private def meeting_params
-    params.require(:meeting).permit(:name, :id, :modPW, :attPW)
+    params.require(:meeting).permit(:name, :id, :modPW, :attPW, :recording)
   end
 
   def show

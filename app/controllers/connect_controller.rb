@@ -16,8 +16,8 @@ class ConnectController < ApplicationController
       redirect_to "#{url}"
     else
       flash[:error] = true
-      redirect_to "/"
-      puts "DEBUG: Problem joining meeting"
+      redirect_to root_path
+      puts 'DEBUG: Problem joining meeting'
     end
   end
 
