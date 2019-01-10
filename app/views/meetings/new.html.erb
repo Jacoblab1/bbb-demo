@@ -1,29 +1,35 @@
 <h1>Create Meeting</h1>
 
-<div class="form-group container col-md-2">
+<div class='form-group container col-md-2'>
 <%= form_with scope: :meeting, url: meetings_path, local: true do |form| %>
   <p>
-    <%= form.label :name, "Meeting Name" %><br>
-    <%= form.text_field :name, class:"form-control" %>
+    <%= form.label :name, 'Meeting Name' %><br>
+    <%= form.text_field :name, class:'form-control' %>
   </p>
 
   <p>
-    <%= form.label :id, "Meeting ID"%><br>
-    <%= form.text_field :id, class:"form-control"  %>
+    <%= form.label :id, 'Meeting ID'%><br>
+    <%= form.text_field :id, class:'form-control'  %>
   </p>
 
   <p>
-    <%= form.label :modPW, "Moderator Password"%><br>
-    <%= form.text_field :modPW, class:"form-control"  %>
+    <%= form.label :modPW, 'Moderator Password'%><br>
+    <%= form.text_field :modPW, class:'form-control'  %>
   </p>
 
   <p>
-    <%= form.label :attPW, "Attendee Password"%><br>
-    <%= form.text_field :attPW, class:"form-control"  %>
+    <%= form.label :attPW, 'Attendee Password'%><br>
+    <%= form.text_field :attPW, class:'form-control'  %>
   </p>
+
   <p>
-    <%= link_to 'Back to list', meetings_path, class:"btn btn-warning" %>
-    <%= form.submit class:"btn btn-warning" %>
+    <%= form.label :recording, 'Record Meeting?'%>
+    <%= form.check_box :recording, class:'form-control'%>
+  </p>
+
+  <p>
+    <%= link_to 'Back to list', meetings_path, class:'btn btn-warning' %>
+    <%= form.submit class:'btn btn-warning' %>
   </p>
 <% end %>
 </div>

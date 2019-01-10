@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_09_145246) do
+ActiveRecord::Schema.define(version: 2019_01_10_154658) do
 
   create_table "connects", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2019_01_09_145246) do
     t.string "attPW"
     t.string "modPW"
     t.string "meetingid"
+    t.integer "recording"
   end
 
 end
