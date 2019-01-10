@@ -11,7 +11,7 @@ class ConnectController < ApplicationController
     if check_valid()
       session[:error] = false
       meeting = Meeting.find(params[:id])
-      create_meeting(meeting[:name], meeting[:id], meeting[:modPW], meeting[:attPW]) # create on bbb server
+      create_meeting(meeting[:name], meeting[:id], meeting[:modPW], meeting[:attPW], meeting[:recording]) # create on bbb server
       url = @api.join_meeting_url(meeting[:id], params[:username], params[:password])
       redirect_to "#{url}"
     else
@@ -21,9 +21,8 @@ class ConnectController < ApplicationController
     end
   end
 
-  # this function is not complete
+  # check if valid meeting ID/password
   private def check_valid
-
     if Meeting.exists?(params[:id])
       @meeting = Meeting.find(params[:id])
       if @meeting.modPW == params[:password] || @meeting.attPW == params[:password]
