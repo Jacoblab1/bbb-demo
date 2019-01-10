@@ -37,3 +37,8 @@ body {
 .title-block {
   display: inline;
 }
+
+table {
+  table-layout: fixed;
+  word-wrap: break-word;
+}

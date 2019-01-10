@@ -4,6 +4,7 @@ class ConnectController < ApplicationController
 
   def index
     @error = flash[:error]
+    @missing = flash[:missing]
     @name = session[:username]
   end
 
@@ -16,7 +17,6 @@ class ConnectController < ApplicationController
       url = @api.join_meeting_url(meeting[:id], params[:username], params[:password])
       redirect_to "#{url}"
     else
-      flash[:error] = true
       redirect_to root_path
       puts 'DEBUG: Problem joining meeting'
     end
@@ -24,6 +24,10 @@ class ConnectController < ApplicationController
 
   # check if valid meeting ID/password
   private def check_valid
+    if params[:password] == "" || params[:username] == "" || params[:id] == ""
+      flash[:missing] = true
+      return false
+    end
     @meetings = @api.get_meetings()
     @meetings[:meetings].each do |m|
        if m[:meetingID] == params[:id]
@@ -32,6 +36,7 @@ class ConnectController < ApplicationController
           end
        end
     end
+    flash[:error] = true
     return false
   end
 end

@@ -34,6 +34,9 @@
         <% if @error == true %>
           <p class="error">Error: Incorrect ID or password</p>
         <% end %>
+        <% if @missing == true %>
+          <p class="error">Error: Please fill all fields</p>
+        <% end %>
       </div>
     </div>
   <% end %>
