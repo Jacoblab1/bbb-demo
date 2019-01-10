@@ -32,22 +32,4 @@ class MeetingsController < ApplicationController
 
     @meeting.destroy
   end
-
-  private def create_meeting(name, id, modPW, attPW)
-    # create a meeting on the BBB server
-    prepare()
-    @id = id
-    @name = name
-    @options = {
-      :attendeePW=> attPW,
-      :moderatorPW => modPW,
-      :welcome => "Welcome to the #{(name)} meeting!"
-    }
-    if @api.is_meeting_running?(@id)
-      puts "The meeting is already running"
-    else
-      response = @api.create_meeting(@name, @id, @options)
-      puts "The meeting has been created"
-    end
-  end
 end
