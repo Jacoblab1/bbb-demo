@@ -3,13 +3,13 @@ require 'bigbluebutton_api'
 class MeetingsController < ApplicationController
   def create
     @meeting = Meeting.create(meeting_params) # create in database
-    create_meeting(meeting_params[:name], meeting_params[:id], meeting_params[:modPW], meeting_params[:attPW]) # create on bbb server
+    create_meeting(meeting_params[:name], meeting_params[:id], meeting_params[:modPW], meeting_params[:attPW], meeting_params[:recording]) # create on bbb server
     @meeting.save
     redirect_to @meeting
   end
 
   private def meeting_params
-    params.require(:meeting).permit(:name, :id, :modPW, :attPW)
+    params.require(:meeting).permit(:name, :id, :modPW, :attPW, :recording)
   end
 
   def show
@@ -33,21 +33,28 @@ class MeetingsController < ApplicationController
     @meeting.destroy
   end
 
-  private def create_meeting(name, id, modPW, attPW)
+  private def create_meeting(name, id, modPW, attPW, recording)
     # create a meeting on the BBB server
     prepare()
+    do_record = false
+    if recording.to_i == 1
+      do_record = true
+    elsif recording.to_i == 0
+      do_record = false
+    end
     @id = id
     @name = name
     @options = {
       :attendeePW=> attPW,
       :moderatorPW => modPW,
-      :welcome => "Welcome to the #{(name)} meeting!"
+      :welcome => 'Welcome to the #{(name)} meeting!',
+      :record => do_record
     }
     if @api.is_meeting_running?(@id)
-      puts "The meeting is already running"
+      puts 'The meeting is already running'
     else
       response = @api.create_meeting(@name, @id, @options)
-      puts "The meeting has been created"
+      puts 'The meeting has been created'
     end
   end
 end
