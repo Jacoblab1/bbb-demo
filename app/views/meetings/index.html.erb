@@ -5,24 +5,28 @@
 <p></p>
 <input class="container col-md-4 form-control" type="text" id="search" onkeyup="search()" placeholder="Search for meeting names...">
 <p></p>
-<table id="searchTable" class="table container col-md-4 table-bordered">
+<table id="searchTable" class="table container table-bordered table-striped">
   <thead class="thead-dark">
     <tr>
       <th scope="col">Name</th>
       <th scope="col">ID</th>
       <th scope="col">Moderator Password</th>
       <th scope="col">Attendee Password</th>
+      <th scope="col">Join as guest</th>
       <!-- <th scope="col">Remove</th> -->
     </tr>
   </thead>
-  <tbody class="table-striped">
+  <tbody>
   <% @meetings[:meetings].each do |meeting| %>
     <tr>
       <td><%= meeting[:meetingName] %></td>
       <td><%= meeting[:meetingID]  %></td>
       <td><%= meeting[:moderatorPW] %></td>
       <td><%= meeting[:attendeePW] %></td>
-      <!-- <td><%= link_to 'Remove', edit_meeting_path(meeting[:meetingID]) %></td> -->
+      <td><%=
+      controller.prepare()
+      url = @api.join_meeting_url(meeting[:meetingID], "Guest", meeting[:attendeePW])
+      link_to 'Join', "#{url}" %></td>
     </tr>
   <% end %>
   </tbody>

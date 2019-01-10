@@ -4,6 +4,7 @@ class ConnectController < ApplicationController
 
   def index
     @error = flash[:error]
+    @name = session[:username]
   end
 
   def join
