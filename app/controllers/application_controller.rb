@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
     if meeting_running(@id)
       puts "The meeting is already running"
     else
-      response = @api.create_meeting(@name, @id, @options)
+      response = make_meeting(@name, @id, @options)
       puts "The meeting has been created"
     end
   end
@@ -47,5 +47,10 @@ class ApplicationController < ActionController::Base
   def meeting_running?(id)
     prepare()
     @api.is_meeting_running?(id)
+  end
+
+  def make_meeting(name, id, options)
+    prepare()
+    @api.create_meeting(name, id, options)
   end
 end
