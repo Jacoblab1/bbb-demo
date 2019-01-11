@@ -44,6 +44,9 @@ group :development, :test do
 
   # Environment configuration.
   gem 'dotenv-rails'
+
+  # RSpec Testing
+  gem 'rspec-rails', '~> 3.8'
 end
 
 group :development do
