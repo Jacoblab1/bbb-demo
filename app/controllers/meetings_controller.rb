@@ -18,5 +18,5 @@ class MeetingsController < ApplicationController
   def index
     # get all meetings
     @meetings = get_meetings()
-  end
+  end 
 end
