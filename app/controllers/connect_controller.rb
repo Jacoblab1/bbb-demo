@@ -23,7 +23,7 @@ class ConnectController < ApplicationController
   end
 
   # check if valid meeting ID/password
-  private def check_valid
+  def check_valid
     if params[:password] == "" || params[:username] == "" || params[:id] == ""
       flash[:missing] = true
       return false
