@@ -17,7 +17,6 @@ class MeetingsController < ApplicationController
 
   def index
     # get all meetings
-    prepare()
-    @meetings = @api.get_meetings()
+    @meetings = get_meetings()
   end
 end

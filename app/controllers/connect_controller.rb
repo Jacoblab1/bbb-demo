@@ -3,15 +3,14 @@ require 'bigbluebutton_api'
 class ConnectController < ApplicationController
 
   def index
+    session[:username] = "Guest"
   end
-
+  
+  # Join a meeting on the BBB server
   def join
-    prepare()
     if check_valid()
       session[:error] = false
-      meeting = Meeting.find(params[:id])
-      create_meeting(meeting[:name], meeting[:id], meeting[:modPW], meeting[:attPW], meeting[:recording]) # create on bbb server
-      url = @api.join_meeting_url(meeting[:id], params[:username], params[:password])
+      url = get_meeting_url()
       redirect_to "#{url}"
     else
       redirect_to root_path
@@ -25,7 +24,7 @@ class ConnectController < ApplicationController
       flash[:missing] = true
       return false
     end
-    @meetings = @api.get_meetings()
+    @meetings = get_meetings()
     @meetings[:meetings].each do |m|
        if m[:meetingID] == params[:id]
           if m[:moderatorPW] == params[:password] || m[:attendeePW] == params[:password]
@@ -35,5 +34,11 @@ class ConnectController < ApplicationController
     end
     flash[:error] = true
     return false
+  end
+
+  # get join meeting url
+  def get_meeting_url
+    prepare()
+    @api.join_meeting_url(params[:id], params[:username], params[:password])
   end
 end

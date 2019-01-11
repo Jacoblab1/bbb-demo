@@ -10,6 +10,12 @@ class ApplicationController < ActionController::Base
     @api = BigBlueButton::BigBlueButtonApi.new(url, secret, version.to_s, true)
   end
 
+
+  def get_meetings
+    prepare()
+    @api.get_meetings()
+  end
+
   def create_meeting(name, id, modPW, attPW, recording)
     # create a meeting on the BBB server
     prepare()

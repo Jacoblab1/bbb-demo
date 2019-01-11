@@ -1,7 +1,11 @@
 class RecordingsController < ApplicationController
   def index
-    prepare()
     # get all recordings
-    @result = @api.get_recordings()
+    @result = get_recordings()
+  end
+
+  def get_recordings
+    prepare()
+    @api.get_recordings()
   end
 end
