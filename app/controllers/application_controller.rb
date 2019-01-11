@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
       :welcome => "Welcome to the #{(name)} meeting!",
       :record => do_record
     }
-    if meeting_running(@id)
+    if meeting_running?(@id)
       puts "The meeting is already running"
     else
       response = make_meeting(@name, @id, @options)
