@@ -19,19 +19,16 @@ class ApplicationController < ActionController::Base
     # create a meeting on the BBB server
     prepare()
     do_record = int_to_boolean(recording)
-
-    @id = id
-    @name = name
     @options = {
       :attendeePW=> attPW,
       :moderatorPW => modPW,
       :welcome => "Welcome to the #{(name)} meeting!",
       :record => do_record
     }
-    if meeting_running?(@id)
+    if meeting_running?(id)
       puts "The meeting is already running"
     else
-      response = make_meeting(@name, @id, @options)
+      response = make_meeting(name, id, @options)
       puts "The meeting has been created"
     end
   end
