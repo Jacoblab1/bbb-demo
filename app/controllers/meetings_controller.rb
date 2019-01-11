@@ -1,6 +1,7 @@
 require 'bigbluebutton_api'
 
 class MeetingsController < ApplicationController
+  # attempts to create a meeting with specified parameters 
   def create
     if meeting_params[:name] == "" || meeting_params[:id] == "" || meeting_params[:modPW] == "" || meeting_params[:attPW] == ""
       flash[:missing] = true
@@ -18,5 +19,5 @@ class MeetingsController < ApplicationController
   def index
     # get all meetings
     @meetings = get_meetings()
-  end 
+  end
 end

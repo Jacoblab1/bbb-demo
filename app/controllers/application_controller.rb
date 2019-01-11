@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
     @api = BigBlueButton::BigBlueButtonApi.new(url, secret, version.to_s, true)
   end
 
+  # gets meetings from BBB server
   def get_meetings
     prepare()
     @api.get_meetings()
@@ -33,6 +34,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # converts an integer to a true/false value
   def int_to_boolean(integer)
     if integer.to_i == 1
       return true
@@ -41,11 +43,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # checks if meeting with specified id is running
   def meeting_running?(id)
     prepare()
     @api.is_meeting_running?(id)
   end
 
+  # creates an ID with specified parameters 
   def make_meeting(name, id, options)
     prepare()
     @api.create_meeting(name, id, options)
