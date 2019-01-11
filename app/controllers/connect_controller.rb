@@ -3,9 +3,6 @@ require 'bigbluebutton_api'
 class ConnectController < ApplicationController
 
   def index
-    @error = flash[:error]
-    @missing = flash[:missing]
-    @name = session[:username]
   end
 
   def join

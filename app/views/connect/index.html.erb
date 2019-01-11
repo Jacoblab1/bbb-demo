@@ -31,10 +31,10 @@
         <%= submit_tag "Join Server", class:"btn btn-warning" %>
         <%= link_to 'View Meetings', meetings_path, class:"btn btn-warning" %>
         <%= link_to 'View Recordings', recordings_path, class:"btn btn-warning" %>
-        <% if @error == true %>
+        <% if flash[:error] == true %>
           <p class="error">Error: Incorrect ID or password</p>
         <% end %>
-        <% if @missing == true %>
+        <% if flash[:missing] == true %>
           <p class="error">Error: Please fill all fields</p>
         <% end %>
       </div>
