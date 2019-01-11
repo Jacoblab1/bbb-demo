@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
   end
 
   def int_to_boolean(integer)
-    if recording.to_i == 1
+    if integer.to_i == 1
       return true
     else
       return false
