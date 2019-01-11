@@ -10,7 +10,6 @@ class ApplicationController < ActionController::Base
     @api = BigBlueButton::BigBlueButtonApi.new(url, secret, version.to_s, true)
   end
 
-
   def get_meetings
     prepare()
     @api.get_meetings()
@@ -19,12 +18,8 @@ class ApplicationController < ActionController::Base
   def create_meeting(name, id, modPW, attPW, recording)
     # create a meeting on the BBB server
     prepare()
-    do_record = false
-    if recording.to_i == 1
-      do_record = true
-    elsif recording.to_i == 0
-      do_record = false
-    end
+    do_record = int_to_boolean(recording)
+
     @id = id
     @name = name
     @options = {
@@ -38,6 +33,14 @@ class ApplicationController < ActionController::Base
     else
       response = @api.create_meeting(@name, @id, @options)
       puts "The meeting has been created"
+    end
+  end
+
+  def int_to_boolean(integer)
+    if recording.to_i == 1
+      return true
+    else
+      return false
     end
   end
 end
