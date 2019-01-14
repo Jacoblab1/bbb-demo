@@ -5,11 +5,10 @@ class ConnectController < ApplicationController
   def index
     session[:username] = "Guest"
   end
-  
+
   # Join a meeting on the BBB server
   def join
     if check_valid()
-      session[:error] = false
       url = get_meeting_url()
       redirect_to "#{url}"
     else
