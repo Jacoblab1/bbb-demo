@@ -4,6 +4,15 @@ rvm:
 script:
   - bundle exec rails db:migrate RAILS_ENV=test
   - bundle exec rspec
+  - bundle exec rake test
+
+services:
+  - docker
+
+before_install:
+  - docker build -t bbb-dev .
+
+
 deploy:
   provider: script
   script: bash docker_push
