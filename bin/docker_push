@@ -1,4 +1,4 @@
 #!/bin/bash
 docker build --tag=jacoblab1/bbb-dev .
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-docker push bbb-dev
+docker push jacoblab1/bbb-dev
