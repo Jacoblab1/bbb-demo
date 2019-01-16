@@ -12,9 +12,6 @@ services:
 # make use of vm's
 sudo: 'required'
 
-after_install:
-  - docker build --tag=bbb-dev .
-
 
 deploy:
   provider: script
