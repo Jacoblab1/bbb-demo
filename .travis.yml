@@ -12,7 +12,7 @@ services:
 # make use of vm's
 sudo: 'required'
 
-before_install:
+after_install:
   - docker build --tag=bbb-dev .
 
 
