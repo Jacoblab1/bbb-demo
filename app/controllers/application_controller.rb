@@ -49,7 +49,7 @@ class ApplicationController < ActionController::Base
     @api.is_meeting_running?(id)
   end
 
-  # creates an ID with specified parameters 
+  # creates an ID with specified parameters
   def make_meeting(name, id, options)
     prepare()
     @api.create_meeting(name, id, options)
