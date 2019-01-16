@@ -9,6 +9,9 @@ script:
 services:
   - docker
 
+# make use of vm's
+sudo: 'required'
+
 before_install:
   - docker build --tag=bbb-dev .
 
