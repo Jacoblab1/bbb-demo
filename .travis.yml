@@ -1,20 +1,16 @@
 language: ruby
-rvm:
-  - 2.5.3
-script:
-  - bundle exec rails db:migrate RAILS_ENV=test
-  - bundle exec rspec
-  - bundle exec rake test
-
 services:
-  - docker
-
-# make use of vm's
-sudo: 'required'
-
-
-deploy:
-  provider: script
-  script: bash docker_push
-  on:
-    branch: master
+- docker
+rvm:
+- 2.5.3
+before_install:
+- docker build -t bbb-dev:latest .
+script:
+- docker login --username $DOCKER_HUB_USERNAME --password $DOCKER_HUB_PASSWORD
+- docker tag bbb-dev:latest $DOCKER_HUB_USERNAME/bbb-dev:prod
+- docker push $DOCKER_HUB_USERNAME/bbb-dev:prod
+sudo: required
+env:
+  global:
+  - secure: iTWhJAyQ6eEaZ6w/BSo2CY60v5ROYP3GYUOqrjX+4iYPD8yIvzrT1SU1SuXI/GLi/8jYLpPKHxURdnmZy7Je9W9a5BmOOL454WOkmL0aA5Z+9V/y+oPsekb+jC3LkoH5p38DMqIPzu2U8HpXdXHA6h5M3VEPo23tUU2Ncdr/sTdobkDE2e54U100lqiddsO71dxqQe0RLqNSw8doZweRvOZXX/4O4jH0iBIXRFRWy5kutNe2Di3aqDTswBr2Kq0+aFafdfxaNxvY2sESHDd7HyU2VgeoKyjx7QqCrFq/mNVDRoNHQkstjtXM1NB9F9Dh6rHe3iO4IBNyVWjrsb1dG/oXfHue516J923KDF6zjR9G9/yhRHxejc1mNiUmcIEB12WVjJuebkyAbJ/WkWLf6DoMmKP3/sgwu5NZSKR0fYe5SuCL7GI7ADTwj9PBU1foZkFga3UVMd4mGGhh5Bg2s65Q0mvj1TMitrNZaJ1m2SH5b/6Uiz9IS5NZ7qktYadkNURUjK0otYgvv0KW+DkJ39JYEsF3UVOzK8mU3/BrkCAPHSK+uPPNZ7/XsMXL693WhnTEfC7eKz3HwpBMxzMqtSzwDMkWTzk5OZm8StUPwplIexUdcvT/pWa/8FNSwBD/o5uQYBS+HR1b8owNRqP1P7IB/A53YjQElB+wABCKT5o=
+  - secure: RP9H85QoNawC6uL77RyYa5msP9uekLuiGxnTQjTfJiIJCAQxQ0j0JMpF161ZXqCR4qpkezmxPb3O54AyTpLjcy1b7ewZaq4p2dpG31nuImswqJF+hDMOyg5TojSQrH17p0HMsPWBIrKCXpV6pl9n9e+9hlKgbej7cB6KSH7gd5u9v3EvsJyFCBTCQh+8fQUB9kVzOWilZxdXH7nGaGJyeYWw688PufloQYlJeM7ZPSYYeMVLT7cgVxstyavKQrm0Mc8utYZoJvMbPWgj2bfRQJpMy0wBd4TNGTVgUpgEQtK33qT2pPegyDof6kfl1h5h8nzlSMiG4CdBzYdD4FH3n+FrECgQieK8UPFLlGjQawupwgN1fNWY6c9irSbp3FdZ8dW5g+5/IBS6WNE9dVSZObG5CLDvUs/BHQFISqiBx/1J97bgD5NncXyh5On2VcxcYwYg432D2RxgukbD/7IdyLqJ9UM2PWksiJKBI+IKEwLia6BTUtTwfjZDQd9NL3KH0vlGKcLoHEBuM8BOi2l39NRHj4/hkP88rGTHFP2zyTlDNL7AkKcdt6FO3eTRBuv6KDRU6/CnAvI+5Poh96wkqn3sHy6fXNS41t0n48zSqinRQ5hZEKTl2XfZRi9ug78/9WBMvYSP97PM6GBNIpDxxIzcRIfnKAyWMjF7XrmNkkk=
