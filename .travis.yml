@@ -17,6 +17,6 @@ before_install:
 - docker build -t bbb-env:latest .
 
 script:
-- docker login --username $DOCKER_HUB_USERNAME --password $DOCKER_HUB_PASSWORD
-- docker tag bbb-env:latest $DOCKER_HUB_USERNAME/bbb-env:prod
-- docker push $DOCKER_HUB_USERNAME/bbb-env:prod
+- docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
+- docker tag bbb-env:latest $DOCKER_USERNAME/bbb-env:prod
+- docker push $DOCKER_USERNAME/bbb-env:prod
