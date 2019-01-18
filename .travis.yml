@@ -20,3 +20,4 @@ script:
 - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
 - docker tag bbb-env:latest $DOCKER_USERNAME/bbb-env:prod
 - docker push $DOCKER_USERNAME/bbb-env:prod
+# test
